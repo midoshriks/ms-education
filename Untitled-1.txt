@@ -1,0 +1,47 @@
+            {{-- ================================================ --}}
+            <div class="row">
+                @foreach ($show_posts as $show_post )
+
+                <div class="container posts-content">
+                    <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="media mb-3">
+                                            <img src="{{asset('img_user/'.$show_post->user_img)}}"
+                                                class="d-block ui-w-40 rounded-circle" alt="">
+                                            <div class="media-body ml-3 mr-3">
+                                                <b>
+                                                {{$show_post->user->name}}
+                                                </b>
+                                                <div class="text-muted small">{{$show_post->created_at->format('d-m-Y')}} days ago</div>
+                                            </div>
+                                        </div>
+
+                                        <p>
+                                            {{$show_post->body}}
+                                        </p>
+                                        <a href="javascript:void(0)" class="ui-rect ui-bg-cover"
+                                            style="background-image: url('{{asset('posts/'.$show_post->file_body)}}');">
+                                        </a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="javascript:void(0)" class="d-inline-block text-muted">
+                                            <strong>123</strong> Likes</small>
+                                        </a>
+                                        <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                                            <strong>12</strong> Comments</small>
+                                        </a>
+                                        <a href="javascript:void(0)" class="d-inline-block text-muted ml-3">
+                                            <small class="align-middle">Repost</small>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+                {{$show_posts->links('pagination::bootstrap-4')}}
+            </div>
+                {{-- ================================================ --}}
