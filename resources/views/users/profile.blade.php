@@ -313,6 +313,19 @@
                                                 </div>
 
                                                 <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Select gender') }}</label>
+                                                        <div class="col-md-12">
+                                                            <select name="gender" class="form-control form-control-line">
+                                                                <option>{{Auth::user()->gender}}</option>
+                                                                <option value="male">ذكر</option>
+                                                                <option value="famale">أنثى</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
                                                     {{-- <label class="col-md-12">your img</label> --}}
                                                     <div class="col-md-12">
                                                         <label for="img" class="col-md-4 col-form-label text-md-right">{{ __(' your img') }}</label>

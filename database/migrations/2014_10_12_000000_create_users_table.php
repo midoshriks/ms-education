@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('user_type')->default('STUDENT');
             $table->string('squad');
             $table->enum('rights',['accept','non_accept'])->nullable();
+            $table->enum('gender',['male','famale']);
             $table->string('img')->nullable();
             $table->integer('verification')->nullable();
             $table->string('password');

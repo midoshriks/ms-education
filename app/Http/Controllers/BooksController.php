@@ -49,9 +49,10 @@ class BooksController extends Controller
 
         // dd($books_student);
 
-        // $books_student->update();
-        return redirect()->route('books_student_tow')->with('success','Data has been Uplode File successfully');
-
+        if($books_student->term == 'term one'){
+            return redirect()->route('books_student_1')->with('success','Data has been Save File successfully');
+        }
+        return redirect()->route('books_student_2')->with('success','Data has been Save File successfully');
 
         // var_dump($user->name);
         // exit;

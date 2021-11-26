@@ -145,12 +145,12 @@
                                                 <a href="/edit_books/{{ $book->id }}">
                                                     <i class="fa fa-edit fa-2x  (alias)"></i>
                                                 </a>
-                                                <a href="/delete_Books/{{ $book->id }}">
-                                                    <i class="fa ti-trash fa-2x "></i>
-                                                </a>
-                                                {{-- <a href="#" class="delete" book_id="{{ $book->id }}" book_name="{{ $book->name }}">
+                                                {{-- <a href="/delete_Books/{{ $book->id }}">
                                                     <i class="fa ti-trash fa-2x "></i>
                                                 </a> --}}
+                                                <a href="#" class="delete" book-id="{{ $book->id }}" book-name="{{ $book->book_name }}">
+                                                    <i class="fa ti-trash fa-2x "></i>
+                                                </a>
                                             </td>
                                         @endif
                                     @endif
@@ -185,10 +185,30 @@
 @endsection
 
 @push('scripts')
-<script>
-    // test
-    // swal("Hello world!");
-    // swal("Hello world!");
-</script>
+    <script>
+        // is function delete row
+        $('.delete').click(function() {
+            var book_id = $(this).attr('book-id');
+            var book_name = $(this).attr('book-name');
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file your " + book_name +
+                        "!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "/delete_Books/" + book_id + ""
+                        swal("Poof! Your imaginary file has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+        });
+    </script>
 @endpush
 

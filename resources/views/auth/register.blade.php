@@ -122,6 +122,17 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="gender"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Select gender') }}</label>
+                                <div class="col-md-6">
+                                    <select name="gender" class="form-control form-control-line">
+                                        <option value="male">ذكر</option>
+                                        <option value="famale">أنثى</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="password"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -149,7 +160,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label for="password-confirm"
                                     class="col-md-4 col-form-label text-md-right">{{ __('img') }}</label>
 
@@ -163,7 +174,8 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
+
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

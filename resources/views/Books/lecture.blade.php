@@ -21,9 +21,9 @@
 
                 {{-- ================================================= --}}
 
-                    @if(!Auth::guest())
+                @if (!Auth::guest())
 
-                        @if(Auth::user()->user_type == 'ADMIN')
+                    @if (Auth::user()->user_type == 'ADMIN')
 
                         <div class="row m-t-3">
                             <div class="col-lg-12">
@@ -40,8 +40,10 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group has-feedback">
                                                         <label class="control-label">File Name</label>
-                                                        <input class="form-control @error('file_name') is-invalid @enderror" placeholder="File Name" type="text" name="file_name">
-                                                        <span class="fa fa-file form-control-feedback" aria-hidden="true"></span>
+                                                        <input class="form-control @error('file_name') is-invalid @enderror"
+                                                            placeholder="File Name" type="text" name="file_name">
+                                                        <span class="fa fa-file form-control-feedback"
+                                                            aria-hidden="true"></span>
                                                         @error('file_name')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                         @enderror
@@ -51,8 +53,10 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group has-feedback">
                                                         <label class="control-label">Url file</label>
-                                                        <input class="form-control @error('url_file') is-invalid @enderror" placeholder="Url File" type="text" name="url_file">
-                                                        <span class="fa fa-link form-control-feedback" aria-hidden="true"></span>
+                                                        <input class="form-control @error('url_file') is-invalid @enderror"
+                                                            placeholder="Url File" type="text" name="url_file">
+                                                        <span class="fa fa-link form-control-feedback"
+                                                            aria-hidden="true"></span>
                                                         @error('url_file')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                         @enderror
@@ -63,22 +67,26 @@
                                                     <div class="form-group has-feedback">
                                                         <label class="control-label">Uploade File</label> <br>
                                                         <label class="custom-file center-block block">
-                                                            <input id="file" name="file" class="custom-file-input @error('file') is-invalid @enderror" type="file">
+                                                            <input id="file" name="file"
+                                                                class="custom-file-input @error('file') is-invalid @enderror"
+                                                                type="file">
                                                             <span class="custom-file-control"></span> </label>
-                                                            @error('file')
-                                                                <div class="alert alert-danger">{{ $message }}</div>
-                                                            @enderror
+                                                        @error('file')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12">
                                                     <div class="form-group has-feedback">
                                                         <label class="control-label">subject</label>
-                                                        <textarea class="form-control @error('subject') is-invalid @enderror" name="subject" id="placeTextarea" rows="3"
+                                                        <textarea
+                                                            class="form-control @error('subject') is-invalid @enderror"
+                                                            name="subject" id="placeTextarea" rows="3"
                                                             placeholder="subject"></textarea>
-                                                            @error('subject')
-                                                                <div class="alert alert-danger">{{ $message }}</div>
-                                                            @enderror
+                                                        @error('subject')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -93,8 +101,8 @@
                             </div>
                         </div>
 
-                        @endif
                     @endif
+                @endif
 
 
                 {{-- ================================================= --}}
@@ -104,11 +112,11 @@
                             <tr>
                                 <th>ID #</th>
                                 <th>file name</th>
-                                <th>file </th>
+                                <th>file or img</th>
                                 <th>Subject</th>
                                 <th>link</th>
-                                @if(!Auth::guest())
-                                    @if(Auth::user()->user_type == 'ADMIN')
+                                @if (!Auth::guest())
+                                    @if (Auth::user()->user_type == 'ADMIN')
                                         <th>Action</th>
                                     @endif
                                 @endif
@@ -117,48 +125,54 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($files as $k => $file )
+                            @foreach ($files as $k => $file)
 
-                            <tr>
-                                <td>{{ $k+1 }}</td>
-                                <td>{{$file->file_name}}</td>
-                                <td>
-                                    <a href="{{ asset('lectures/'.$file->file ) }}">view</a>
-                                    {{-- <a href="{{ asset('/pooks/A4-31 دراسة محاسبية باللغة الإنجليزية.pdf') }}">view</a> --}}
-                                </td>
-                                <td>{{$file->subject}}</td>
-                                <td>
-                                    <a href="{{$file->url_file}}"><span class="label label-success">Activity</span></a>
-                                </td>
-                                @if(!Auth::guest())
-                                    @if(Auth::user()->user_type == 'ADMIN')
+                                <tr>
+                                    <td>{{ $k + 1 }}</td>
+                                    <td>{{ $file->file_name }}</td>
                                     <td>
-                                        <a href="/edit_files/{{ $file->id }}">
-                                            <i class="fa fa-edit fa-2x  (alias)"></i>
-                                        </a>
-                                        <a href="/delete_lecture/{{$file->id}}">
-                                            <i class="fa ti-trash fa-2x "></i>
-                                        </a>
-
-                                        {{-- <a href="/edit_lecture/{{$file->id}}" class="btn btn-info">Edit</a> --}}
-                                        {{-- <a href="/delete_lecture/{{$file->id}}" class="btn btn-danger">Delete</a> --}}
+                                        {{-- <a href="{{ asset('lectures/' . $file->file) }}">view</a> --}}
+                                        <img src="{{ asset('lectures/' . $file->file) }}" alt="" style="height: 30px">
                                     </td>
+                                    <td>{{ $file->subject }}</td>
+                                    <td>
+                                        <a href="{{ $file->url_file }}">
+                                            {{-- <span class="label label-success"> Activity</span> --}}
+                                            <i class="fa  fa-desktop fa-2x"></i>
+                                        </a>
+                                    </td>
+                                    @if (!Auth::guest())
+                                        @if (Auth::user()->user_type == 'ADMIN')
+                                            <td>
+                                                <a href="/edit_files/{{ $file->id }}">
+                                                    <i class="fa fa-edit fa-2x  (alias)"></i>
+                                                </a>
+                                                {{-- <a href="/delete_lecture/{{ $file->id }}">
+                                                    <i class="fa ti-trash fa-2x "></i>
+                                                </a> --}}
+                                                <a href="#" class="delete" data-id="{{ $file->id }}" data-name="{{ $file->file_name }}">
+                                                    <i class="fa ti-trash fa-2x "></i>
+                                                </a>
+
+                                                {{-- <a href="/edit_lecture/{{$file->id}}" class="btn btn-info">Edit</a> --}}
+                                                {{-- <a href="/delete_lecture/{{$file->id}}" class="btn btn-danger">Delete</a> --}}
+                                            </td>
+                                        @endif
                                     @endif
-                                @endif
-                                <td>{{$file->cearte_by}}</td>
-                                <td>{{ $file->created_at->format('d-m-Y') }}</td>
-                            </tr>
+                                    <td>{{ $file->cearte_by }}</td>
+                                    <td>{{ $file->created_at->format('d-m-Y') }}</td>
+                                </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>ID #</th>
                                 <th>file name</th>
-                                <th>file </th>
+                                <th>file or img</th>
                                 <th>Subject</th>
-                                <th>Status</th>
-                                @if(!Auth::guest())
-                                    @if(Auth::user()->user_type == 'ADMIN')
+                                <th>link</th>
+                                @if (!Auth::guest())
+                                    @if (Auth::user()->user_type == 'ADMIN')
                                         <th>Action</th>
                                     @endif
                                 @endif
@@ -174,3 +188,33 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+@push('scripts')
+    <script>
+        // swal("Hello world!");
+
+        // is function delete row
+        $('.delete').click(function() {
+            var file_id = $(this).attr('data-id');
+            var file_name = $(this).attr('data-name');
+            swal({
+
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file your " + file_name +
+                        "!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "/delete_lecture/" + file_id + ""
+                        swal("Poof! Your imaginary file has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+        });
+    </script>
+@endpush

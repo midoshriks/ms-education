@@ -5,6 +5,7 @@ use App\Http\Controllers\FilesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('auth.login');
-});
-
 
 // Route::get('/books', function () {
 //     return view('Books.books');
@@ -30,10 +26,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/', function () {
+    // return view('welcome');
+    return view('auth.login');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// acssepted user usrl
 Route::get('/condition', [App\Http\Controllers\ProfileController::class, 'condition'])->name('condition');
 Route::post('/accept_condition/{id}', [App\Http\Controllers\ProfileController::class, 'accept_condition'])->name('accept_condition');
-// acssepted user usrl
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // profile->user
 Route::get('/users/{id}', [ProfileController::class, 'index'])->name('profile');
 Route::post('/updata_user/{id}', [ProfileController::class, 'updata_user'])->name('updata_user');

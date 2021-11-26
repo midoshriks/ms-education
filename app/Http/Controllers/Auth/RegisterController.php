@@ -79,18 +79,27 @@ class RegisterController extends Controller
             'user_type' => $data['user_type'],
             'verification' => $data['verification'],
             'squad' => $data['squad'],
+            'gender' => $data['gender'],
             'password' => Hash::make($data['password']),
         ]);
 
-        if(request()->hasFile('img')){
-            $img = request()->file('img')->getClientOriginalName();
-            request()->file('img')->move('img_user/',request()->file('img')->getClientOriginalName());
+        if($user->gender == 'male'){
+            $img = 'user_male.jpg';
+            $user->update(['img' => $img]);
+        } else {
+            $img = 'user_famale.png';
             $user->update(['img' => $img]);
         }
-        else {
-            $img = 'noimage.jpg';
-            $user->update(['img' => $img]);
-        }
+
+        // if(request()->hasFile('img')){
+        //     $img = request()->file('img')->getClientOriginalName();
+        //     request()->file('img')->move('img_user/',request()->file('img')->getClientOriginalName());
+        //     $user->update(['img' => $img]);
+        // }
+        // else {
+        //     $img = 'noimage.jpg';
+        //     $user->update(['img' => $img]);
+        // }
 
         // dd($img);
         // dd($user);

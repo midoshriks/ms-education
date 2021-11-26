@@ -39,6 +39,7 @@ class ProfileController extends Controller
         $user->phone = $request->phone;
         $user->country = $request->country;
         $user->squad = $request->squad;
+        $user->gender = $request->gender;
         if($request->hasFile('img')){
             $request->file('img')->move('img_user/',$request->file('img')->getClientOriginalName());
             $user->img  = $request->file('img')->getClientOriginalName();

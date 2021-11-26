@@ -29,7 +29,7 @@ class PostsController extends Controller
         $this->validate($request,[
             'body' => 'required',
             // 'file_body' => 'required|mimes:jpeg,png,jpg,gif,|max:1048',
-            'file_body' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file_body' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1048',
         ]);
 
         $post = new Posts();
