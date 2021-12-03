@@ -35,6 +35,10 @@ class HomeController extends Controller
             return redirect()->route('condition');
         }
 
+        if(Auth::user()->user_type == 'STUDENT'){
+            return view('dashbord.dashbord_student');
+        }
+
         $show_posts = Posts::orderby('id', 'desc')->paginate(3);
         return view('dashbord.dashbord',compact('users','count_students','count_students2','users2','show_posts'));
     }

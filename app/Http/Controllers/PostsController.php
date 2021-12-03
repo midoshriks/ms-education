@@ -29,14 +29,13 @@ class PostsController extends Controller
         $this->validate($request,[
             'body' => 'required',
             // 'file_body' => 'required|mimes:jpeg,png,jpg,gif,|max:1048',
-            'file_body' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1048',
+            'file_body' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1048',
         ]);
 
         $post = new Posts();
         $post->body = $request->body;
         $post->file_body = $request->file_body;
         $post->user_id = Auth::user()->id;
-        $post->user_img = Auth::user()->img;
         $post->user_email = Auth::user()->email;
 
         if($request->hasFile('file_body')){

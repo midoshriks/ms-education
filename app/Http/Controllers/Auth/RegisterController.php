@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone' => ['required', 'string', 'min:11'],
-            // 'verification' => ['required', 'int', 'min:4'],
+            'verification' => ['required', 'int', 'min:4'],
             'img' => ['mimes:jpeg,jpg,png,gif','max:10000'],
         ]);
     }
@@ -83,6 +83,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
+        if($user->user_type == 'ADMIN'){
+            $squad = 'ADMIN';
+            $user->update(['squad' => $squad]);
+        }
         if($user->gender == 'male'){
             $img = 'user_male.jpg';
             $user->update(['img' => $img]);

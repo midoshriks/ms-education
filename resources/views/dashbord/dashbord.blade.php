@@ -316,9 +316,13 @@
                                         </p>
                                     </div>
 
-                                        <a href="javascript:void(0)" class="ui-rect ui-bg-cover"
+                                    @if ($show_post->file_body == Null)
+
+                                    @else
+                                    <a href="javascript:void(0)" class="ui-rect ui-bg-cover"
                                         style="background-image: url('{{asset('posts/'.$show_post->file_body)}}');">
                                     </a>
+                                    @endif
                                 </div>
                                 <div class="card-footer">
                                     <a href="javascript:void(0)" class="d-inline-block text-muted">
