@@ -131,8 +131,8 @@
                                     <td>{{ $k + 1 }}</td>
                                     <td>{{ $file->file_name }}</td>
                                     <td>
-                                        {{-- <a href="{{ asset('lectures/' . $file->file) }}">view</a> --}}
-                                        <img src="{{ asset('lectures/' . $file->file) }}" alt="" style="height: 30px">
+                                        <a href="{{ asset('lectures/' . $file->file) }}">view</a>
+                                        {{-- <img src="{{ asset('lectures/' . $file->file) }}" alt="" style="height: 30px"> --}}
                                     </td>
                                     <td>{{ $file->subject }}</td>
                                     <td>

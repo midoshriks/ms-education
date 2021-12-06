@@ -52,6 +52,19 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group has-feedback">
+                                                        <label class="control-label">Url file</label>
+                                                        <input class="form-control @error('url_file') is-invalid @enderror"
+                                                            placeholder="" value="{{$edit_files->url_file}}" type="text" name="url_file">
+                                                        <span class="fa fa-link form-control-feedback"
+                                                            aria-hidden="true"></span>
+                                                        @error('url_file')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group has-feedback">
                                                         <label class="control-label">Uploade File</label> <br>
                                                         <label class="custom-file center-block block">
                                                             <input id="file" name="file"
